@@ -1,4 +1,6 @@
-@extends('layouts/admin')@section('content')<div class="row">
+@extends('layouts/admin')
+@section('content')
+<div class="row">
     <div class="col">
         <h1 class="display-2">Add a Student Profile</h1>
     </div>
@@ -23,7 +25,18 @@
             @error('email')
                 <span class="text-danger" role="alert"><strong>{{ $message }}</strong></span>
             @enderror
-        </div><button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="mb-3">
+                <label for="courseName" class="form-label">Course</label>
+                <select name="course" id="course">
+                    @foreach ($courses as $course)
+                        <option value="{{ $course -> id }}">{{ $course -> courseName }}</option>
+                    @endforeach
+                </select>
+            </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 @endsection
